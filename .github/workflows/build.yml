@@ -214,7 +214,7 @@ jobs:
               }
 
               public boolean lockScreen() {
-                  return performGlobalAction(GLOBAL_ACTION_LOCK_SCREEN);
+                  return performGlobalAction(AccessibilityService.GLOBAL_ACTION_LOCK_SCREEN);
               }
 
               @Override
@@ -241,15 +241,13 @@ jobs:
                   LockAccessibilityService service = LockAccessibilityService.getInstance();
                   if (service != null) {
                       service.lockScreen();
-                      finish();
-                      overridePendingTransition(0, 0);
                   } else {
                       Toast.makeText(this,
                               "Pehle Accessibility me 'Screen Off' enable karo",
                               Toast.LENGTH_LONG).show();
                       startActivity(new Intent(this, SetupActivity.class));
-                      finish();
                   }
+                  finish();
               }
           }
           EOF
